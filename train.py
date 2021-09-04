@@ -46,7 +46,10 @@ def train(config: dict):
     seed_everything(config.get('seed', 1024))
 
     # Initialize model
-    model = MTParamModel(**config['model_params'])
+    model = MTParamModel(
+        use_log=config['training_params'].get('use_log_output', False),
+        **config['model_params']
+    )
 
     # Initialize criterion
     criterion = torch.nn.MSELoss()
@@ -59,9 +62,11 @@ def train(config: dict):
 
     # Initialize train / val / test datasets
     train_dataset = MTDataset(
+        use_log=config['training_params'].get('use_log_output', False),
         **config['train_dataset_params']
     )
     valid_dataset = MTDataset(
+        use_log=config['training_params'].get('use_log_output', False),
         **config['valid_dataset_params']
     )
 
@@ -95,7 +100,7 @@ def train(config: dict):
         model=model,
         optimizer=optimizer,
         scheduler=scheduler,
-        criterion=criterion
+        criterion=criterion,
     )
 
     # Initialize trainer
