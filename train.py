@@ -47,7 +47,6 @@ def train(config: dict):
 
     # Initialize model
     model = MTParamModel(
-        use_log=config['training_params'].get('use_log_output', False),
         **config['model_params']
     )
 
@@ -62,11 +61,9 @@ def train(config: dict):
 
     # Initialize train / val / test datasets
     train_dataset = MTDataset(
-        use_log=config['training_params'].get('use_log_output', False),
         **config['train_dataset_params']
     )
     valid_dataset = MTDataset(
-        use_log=config['training_params'].get('use_log_output', False),
         **config['valid_dataset_params']
     )
 

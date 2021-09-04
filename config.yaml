@@ -11,9 +11,6 @@ scheduler_params:
 
 model_params: {}
 
-training_params:
-  use_log_output: False
-
 train_dataset_params:
   filename: train.csv
 

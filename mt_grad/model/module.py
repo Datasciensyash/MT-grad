@@ -5,7 +5,7 @@ from mt_grad.model.encoder import ResSignalEncoder
 
 
 class MTParamModel(nn.Module):
-    def __init__(self, in_channels: int = 13, hidden_channels: int = 32, out_features: int = 243, use_log: bool = False):
+    def __init__(self, in_channels: int = 13, hidden_channels: int = 32, out_features: int = 243):
         super(MTParamModel, self).__init__()
         self.rho_encoder = ResSignalEncoder(
             in_channels=in_channels,
@@ -27,7 +27,7 @@ class MTParamModel(nn.Module):
             nn.Linear(1024, 1024),
             nn.LeakyReLU(0.2),
             nn.Linear(1024, out_features),
-            nn.ReLU() if not use_log else nn.Identity()
+            nn.ReLU()
         )
 
     @staticmethod
