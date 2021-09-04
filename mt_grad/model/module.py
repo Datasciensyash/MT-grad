@@ -5,7 +5,7 @@ from mt_grad.model.encoder import ResSignalEncoder
 
 
 class MTParamModel(nn.Module):
-    def __init__(self, use_log: bool = False, in_channels: int = 13, hidden_channels: int = 32, out_features: int = 243):
+    def __init__(self, in_channels: int = 13, hidden_channels: int = 32, out_features: int = 243, use_log: bool = False):
         super(MTParamModel, self).__init__()
         self.rho_encoder = ResSignalEncoder(
             in_channels=in_channels,
