@@ -7,7 +7,7 @@ from torch.utils.data import Dataset
 
 
 class MTDataset(Dataset):
-    def __init__(self, use_log: bool = False, filename: str):
+    def __init__(self, filename: str, use_log: bool = False):
         self.data_array = pd.read_csv(filename).values
         self.use_log = use_log
 
