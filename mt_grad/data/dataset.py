@@ -8,7 +8,7 @@ from torch.utils.data import Dataset
 
 class MTDataset(Dataset):
     def __init__(self, filename: str):
-        self.dataframe = pd.read_csv(filename)
+        self.data_array = pd.read_csv(filename).values
 
     def format_row(
             self, row: np.ndarray
@@ -22,7 +22,7 @@ class MTDataset(Dataset):
         return (rho_yx, rho_xy), (phi_yx, phi_xy), target
 
     def __getitem__(self, index: int):
-        row = self.dataframe.loc[index, :].values[:-1]
+        row = self.data_array[index, :-1]
         (rho_yx, rho_xy), (phi_yx, phi_xy), target = self.format_row(row)
         rho_yx, rho_xy = torch.Tensor(rho_yx), torch.Tensor(rho_xy)
         phi_yx, phi_xy = torch.Tensor(phi_yx), torch.Tensor(phi_xy)
@@ -30,4 +30,4 @@ class MTDataset(Dataset):
         return (rho_yx, rho_xy), (phi_yx, phi_xy), target
 
     def __len__(self):
-        return len(self.dataframe)
+        return self.data_array.shape[0]
