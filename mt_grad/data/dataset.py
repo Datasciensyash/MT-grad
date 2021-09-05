@@ -27,7 +27,7 @@ class MTDataset(Dataset):
         rho_yx, rho_xy = torch.Tensor(rho_yx), torch.Tensor(rho_xy)
         phi_yx, phi_xy = torch.Tensor(phi_yx), torch.Tensor(phi_xy)
         target = torch.Tensor(target)
-        return (rho_yx, rho_xy), (phi_yx, phi_xy), np.log(target)
+        return (rho_yx, rho_xy), (phi_yx, phi_xy), target
 
     def __len__(self):
         return self.data_array.shape[0]
