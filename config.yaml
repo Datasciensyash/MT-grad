@@ -1,4 +1,4 @@
-experiment_name: Test
+experiment_name: Version1
 experiments_path: ./experiments/
 
 optimizer_name: Adam
@@ -15,7 +15,7 @@ train_dataset_params:
   filename: train.csv
 
 valid_dataset_params:
-  filename: train.csv
+  filename: valid.csv
 
 dataloader_params:
   train_batch_size: 32
